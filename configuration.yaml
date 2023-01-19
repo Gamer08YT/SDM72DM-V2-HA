@@ -1,0 +1,89 @@
+modbus:
+  - name: sdm72dm
+    type: serial
+    method: rtu
+    # Your USB Port used (https://www.ebay.de/itm/255283310832).
+    port: /dev/ttyUSB0
+    baudrate: 9600
+    stopbits: 1
+    bytesize: 8
+    parity: N
+    # Merktext für Jan:
+    # Hi und Low Byte müssen als Decimal Zahl angegeben werden... 
+    # https://xn--stromzhler-v5a.eu/media/pdf/c8/25/db/SDM72DM-V2_DE.pdf
+    # Siehe Letzte Spalten in Tabelle : https://www.rapidtables.com/convert/number/decimal-to-hex.html
+    sensors:
+      - name: "Wirkleistung Import (Tageszähler)"
+        device_class: energy
+        unit_of_measurement: "kWh"
+        slave: 1
+        address: 72
+        input_type: input
+        state_class: total_increasing    
+        count: 2
+        precision: 2
+        data_type: float32
+        unique_id: "Meter72"
+        scan_interval: 5
+      - name: "Wirkleistung Export (Tageszähler)"
+        device_class: energy
+        unit_of_measurement: "kWh"
+        slave: 1
+        address: 74
+        input_type: input
+        state_class: total_increasing    
+        count: 2
+        precision: 2
+        data_type: float32
+        unique_id: "Meter74"
+        scan_interval: 5
+      - name: "Derzeitige Wirkleistung"
+        unit_of_measurement: "W"
+        slave: 1
+        address: 52
+        input_type: input
+        count: 2
+        precision: 2
+        data_type: float32
+        unique_id: "Meter52"
+        scan_interval: 5
+      - name: "Derzeitige Wirkleistung (L1)"
+        unit_of_measurement: "W"
+        slave: 1
+        address: 12
+        input_type: input
+        count: 2
+        precision: 2
+        data_type: float32
+        unique_id: "Meter12"
+        scan_interval: 5
+      - name: "Derzeitige Wirkleistung (L2)"
+        unit_of_measurement: "W"
+        slave: 1
+        address: 14
+        input_type: input
+        count: 2
+        precision: 2
+        data_type: float32
+        unique_id: "Meter14"
+        scan_interval: 5
+      - name: "Derzeitige Wirkleistung (L3)"
+        unit_of_measurement: "W"
+        slave: 1
+        address: 16
+        input_type: input
+        count: 2
+        precision: 2
+        data_type: float32
+        unique_id: "Meter16"
+        scan_interval: 5
+      - name: "Stromstärke Neutralleiter"
+        unit_of_measurement: "A"
+        slave: 1
+        address: 224
+        input_type: input
+        count: 2
+        precision: 2
+        data_type: float32
+        unique_id: "Meter224"
+        scan_interval: 5
