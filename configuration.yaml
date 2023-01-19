@@ -2,7 +2,7 @@ modbus:
   - name: sdm72dm
     type: serial
     method: rtu
-    # Your USB Port used (https://www.ebay.de/itm/255283310832).
+    # Your USB Port used (https://ebay.us/GXAAhX).
     port: /dev/ttyUSB0
     baudrate: 9600
     stopbits: 1
