@@ -1,15 +1,15 @@
+# Modbus
 modbus:
   - name: sdm72dm
     type: serial
     method: rtu
-    # Your USB Port used (https://ebay.us/GXAAhX).
     port: /dev/ttyUSB0
     baudrate: 9600
     stopbits: 1
     bytesize: 8
     parity: N
     # Merktext für Jan:
-    # Hi und Low Byte müssen als Decimal Zahl angegeben werden... 
+    # Hi und Low Byte müssen als Decimal Zahl angegeben werden...
     # https://xn--stromzhler-v5a.eu/media/pdf/c8/25/db/SDM72DM-V2_DE.pdf
     # Siehe Letzte Spalten in Tabelle : https://www.rapidtables.com/convert/number/decimal-to-hex.html
     sensors:
@@ -19,8 +19,7 @@ modbus:
         slave: 1
         address: 72
         input_type: input
-        state_class: total_increasing    
-        count: 2
+        state_class: total_increasing
         precision: 2
         data_type: float32
         unique_id: "Meter72"
@@ -31,8 +30,7 @@ modbus:
         slave: 1
         address: 74
         input_type: input
-        state_class: total_increasing    
-        count: 2
+        state_class: total_increasing
         precision: 2
         data_type: float32
         unique_id: "Meter74"
@@ -42,7 +40,6 @@ modbus:
         slave: 1
         address: 52
         input_type: input
-        count: 2
         precision: 2
         data_type: float32
         unique_id: "Meter52"
@@ -52,7 +49,6 @@ modbus:
         slave: 1
         address: 12
         input_type: input
-        count: 2
         precision: 2
         data_type: float32
         unique_id: "Meter12"
@@ -62,7 +58,6 @@ modbus:
         slave: 1
         address: 14
         input_type: input
-        count: 2
         precision: 2
         data_type: float32
         unique_id: "Meter14"
@@ -72,7 +67,6 @@ modbus:
         slave: 1
         address: 16
         input_type: input
-        count: 2
         precision: 2
         data_type: float32
         unique_id: "Meter16"
@@ -82,8 +76,15 @@ modbus:
         slave: 1
         address: 224
         input_type: input
-        count: 2
         precision: 2
         data_type: float32
         unique_id: "Meter224"
         scan_interval: 5
+      - name: "Leistungsfaktor"
+        slave: 1
+        address: 62
+        input_type: input
+        precision: 2
+        data_type: float32
+        unique_id: "Meter62"
+        scan_interval: 10
